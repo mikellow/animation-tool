@@ -43,25 +43,6 @@
     </div>
 </div>
 
-<div class="wrapper" id="animationToolsFrames">
-    <p>animation tool frames</p>
-    <div class="row">
-        <div class="col">
-          <ul id="framesList" class="inline-list">
-            <li class="active">single frame</li>
-            <li>single frame</li>
-          </ul>
-        </div>
-        <div class="col">
-          <ul id="framesListActions" class="inline-list">
-            <li><button>Remove</button></li>
-            <li><button>AddNew</button></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-</div>
-
 <div class="wrapper" id="animationToolsCurrentElement">
     <p>animation tool current element</p>
     <div class="row">
@@ -126,6 +107,25 @@
         </form>
       </div>
 
+    </div>
+</div>
+
+<div class="wrapper" id="animationToolsFrames">
+    <p>animation tool frames</p>
+    <div class="row">
+        <div class="col">
+          <ul id="framesList" class="inline-list">
+            <li class="active">single frame</li>
+            <li>single frame</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul id="framesListActions" class="inline-list">
+            <li><button onclick='animationTool.removeFrame()'>Remove</button></li>
+            <li><button onclick='animationTool.addFrame()'>Add</button></li>
+          </ul>
+        </div>
+      </div>
     </div>
 </div>
 

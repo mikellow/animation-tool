@@ -1,0 +1,28 @@
+/* shared */
+$h2size: 46px;
+
+/* colors */
+$green: #28735F;
+$greenDark: #1C413A;
+$white: white;
+
+/* z-indexes */
+$regular-item-z-index: 100;
+$top-menu-z-index : 999;
+$ask-us-form-z-index : 800;
+
+
+
+/* desktop values */
+$section-content-max-width: 900px;
+$section-content-left-width: 320px;
+
+/* animations */
+$ask-form-toggle-time: 0.5;
+
+/* triangles */
+
+$triangle-left-top-height: 17vh;
+$triangle-left-top-width: calc(#{$triangle-left-top-height}*1.3);
+$triangle-right-bottom-height: 17vh;
+$triangle-right-bottom-width: calc(#{$triangle-right-bottom-height}*1.3);

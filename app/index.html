@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello on animation tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<link rel="stylesheet" type="text/css" href="css/main.min.css">-->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/animation-tool.css">
+</head>
+<body>
+
+<div class="slide full-page active">
+  <h2>animation tool</h2>
+</div>
+
+<div class="wrapper">
+    <div class="display-box">
+        <div class="rectangle" id="original">original</div>
+        <div class="rectangle" id="transformed">transformed</div>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="controllers-box">
+    <form id="transformationsForm">
+        <ul>
+            <li>
+                <label for="translateX">translateX</label>
+                <input type="range" name="translateX" min="-170" max="170"/ default="0"
+                data-property="translateX"
+                data-unit="px">
+                <input type="number" name="translateX" min="-170" max="170"/ value="0"
+                data-property="translateX"
+                data-unit="px">
+            </li>
+            <li>
+                <label for="translateY">translateY</label>
+                <input type="range" name="translateY" min="-170" max="170"/ default="0"
+                data-property="translateY"
+                data-unit="px">
+                <input type="number" name="translateY" min="-170" max="170"/ value="0"
+                data-property="translateY"
+                data-unit="px">
+            </li>
+            <li>
+                <label for="translateZ">translateZ</label>
+                <input type="range" name="translateZ" min="-170" max="170"/ default="0"
+                data-property="translateZ"
+                data-unit="px">
+                <input type="number" name="translateZ" min="-170" max="170"/ value="0"
+                data-property="translateZ"
+                data-unit="px">
+            </li>
+            <li>
+                <label for="rotateX">rotateX</label>
+                <input type="range" name="rotateX" min="-180" max="180"/ default="0"
+                data-property="rotateX"
+                data-unit="deg">
+                <input type="number" name="rotateX" min="-180" max="180"/ value="0"
+                data-property="rotateX"
+                data-unit="deg">
+            </li>
+            <li>
+                <label for="rotateY">rotateY</label>
+                <input type="range" name="rotateY" min="-180" max="180"/ default="0"
+                data-property="rotateY"
+                data-unit="deg">
+                <input type="number" name="rotateY" min="-180" max="180"/ value="0"
+                data-property="rotateY"
+                data-unit="deg">
+            </li>
+            <li>
+                <label for="rotateZ">rotateZ</label>
+                <input type="range" name="rotateZ" min="-180" max="180"/ default="0"
+                data-property="rotateZ"
+                data-unit="deg">
+                <input type="number" name="rotateZ" min="-180" max="180"/ value="0"
+                data-property="rotateZ"
+                data-unit="deg">
+            </li>
+        </ul>
+    </form>
+    </div>
+</div>
+
+<script src="js/animation-tool-base.js"></script>
+<script src="js/animation-tool.js"></script>
+
+</body>
+</html>

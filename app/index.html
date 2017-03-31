@@ -22,13 +22,15 @@
                   <label for="displayWidth">width</label>
                   <input type="number" name="displayWidth" min="0" max="1920"/ value="0"
                   data-property="displayWidth"
-                  data-unit="px">
+                  data-unit="px"
+                  onchange="animationTool.setDisplayWidth(this)">
               </li>
               <li>
-                  <label for="displayWidth">height</label>
-                  <input type="number" name="displayWidth" min="0" max="1080"/ value="0"
-                  data-property="displayWidth"
-                  data-unit="px">
+                  <label for="displayHeight">height</label>
+                  <input type="number" name="displayHeight" min="0" max="1080"/ value="0"
+                  data-property="displayHeight"
+                  data-unit="px"
+                  onchange="animationTool.setDisplayHeight(this)">
               </li>
             </ul>
           </form>
@@ -36,87 +38,13 @@
   </div>
 </div>
 
-<div class="wrapper" id="displayContainer">
-    <div class="display-box">
-        <div class="display-element" id="original">original</div>
-        <div class="display-element" id="transformed">transformed</div>
-    </div>
-</div>
-
-<div class="wrapper" id="animationToolsCurrentElement">
-    <p>animation tool current element</p>
-    <div class="row">
-      <div class="col">
-        <form id="transformationsForm">
-            <ul>
-                <li>
-                    <label for="translateX">translateX</label>
-                    <input type="range" name="translateX" min="-170" max="170"/ default="0"
-                    data-property="translateX"
-                    data-unit="px">
-                    <input type="number" name="translateX" min="-170" max="170"/ value="0"
-                    data-property="translateX"
-                    data-unit="px">
-                </li>
-                <li>
-                    <label for="translateY">translateY</label>
-                    <input type="range" name="translateY" min="-170" max="170"/ default="0"
-                    data-property="translateY"
-                    data-unit="px">
-                    <input type="number" name="translateY" min="-170" max="170"/ value="0"
-                    data-property="translateY"
-                    data-unit="px">
-                </li>
-                <li>
-                    <label for="translateZ">translateZ</label>
-                    <input type="range" name="translateZ" min="-170" max="170"/ default="0"
-                    data-property="translateZ"
-                    data-unit="px">
-                    <input type="number" name="translateZ" min="-170" max="170"/ value="0"
-                    data-property="translateZ"
-                    data-unit="px">
-                </li>
-                <li>
-                    <label for="rotateX">rotateX</label>
-                    <input type="range" name="rotateX" min="-180" max="180"/ default="0"
-                    data-property="rotateX"
-                    data-unit="deg">
-                    <input type="number" name="rotateX" min="-180" max="180"/ value="0"
-                    data-property="rotateX"
-                    data-unit="deg">
-                </li>
-                <li>
-                    <label for="rotateY">rotateY</label>
-                    <input type="range" name="rotateY" min="-180" max="180"/ default="0"
-                    data-property="rotateY"
-                    data-unit="deg">
-                    <input type="number" name="rotateY" min="-180" max="180"/ value="0"
-                    data-property="rotateY"
-                    data-unit="deg">
-                </li>
-                <li>
-                    <label for="rotateZ">rotateZ</label>
-                    <input type="range" name="rotateZ" min="-180" max="180"/ default="0"
-                    data-property="rotateZ"
-                    data-unit="deg">
-                    <input type="number" name="rotateZ" min="-180" max="180"/ value="0"
-                    data-property="rotateZ"
-                    data-unit="deg">
-                </li>
-            </ul>
-        </form>
-      </div>
-
-    </div>
-</div>
-
 <div class="wrapper" id="animationToolsFrames">
-    <p>animation tool frames</p>
+    <p>elements</p>
     <div class="row">
         <div class="col">
           <ul id="framesList" class="inline-list">
-            <li class="active">single frame</li>
-            <li>single frame</li>
+            <li class="active">1</li>
+            <li>2</li>
           </ul>
         </div>
         <div class="col">
@@ -129,74 +57,142 @@
     </div>
 </div>
 
-<!-- <div class="wrapper">
-    <div class="display-box">
-        <div class="rectangle" id="original">original</div>
-        <div class="rectangle" id="transformed">transformed</div>
+<div class="wrapper no-padding" id="displayContainer">
+    <div class="display-box" id="displayBox">
+        <div class="display-element" id="original">original</div>
+        <div class="display-element" id="transformed">transformed</div>
     </div>
 </div>
-<div class="wrapper">
-    <div class="controllers-box">
-    <form id="transformationsForm">
-        <ul>
-            <li>
-                <label for="translateX">translateX</label>
-                <input type="range" name="translateX" min="-170" max="170"/ default="0"
-                data-property="translateX"
-                data-unit="px">
-                <input type="number" name="translateX" min="-170" max="170"/ value="0"
-                data-property="translateX"
-                data-unit="px">
-            </li>
-            <li>
-                <label for="translateY">translateY</label>
-                <input type="range" name="translateY" min="-170" max="170"/ default="0"
-                data-property="translateY"
-                data-unit="px">
-                <input type="number" name="translateY" min="-170" max="170"/ value="0"
-                data-property="translateY"
-                data-unit="px">
-            </li>
-            <li>
-                <label for="translateZ">translateZ</label>
-                <input type="range" name="translateZ" min="-170" max="170"/ default="0"
-                data-property="translateZ"
-                data-unit="px">
-                <input type="number" name="translateZ" min="-170" max="170"/ value="0"
-                data-property="translateZ"
-                data-unit="px">
-            </li>
-            <li>
-                <label for="rotateX">rotateX</label>
-                <input type="range" name="rotateX" min="-180" max="180"/ default="0"
-                data-property="rotateX"
-                data-unit="deg">
-                <input type="number" name="rotateX" min="-180" max="180"/ value="0"
-                data-property="rotateX"
-                data-unit="deg">
-            </li>
-            <li>
-                <label for="rotateY">rotateY</label>
-                <input type="range" name="rotateY" min="-180" max="180"/ default="0"
-                data-property="rotateY"
-                data-unit="deg">
-                <input type="number" name="rotateY" min="-180" max="180"/ value="0"
-                data-property="rotateY"
-                data-unit="deg">
-            </li>
-            <li>
-                <label for="rotateZ">rotateZ</label>
-                <input type="range" name="rotateZ" min="-180" max="180"/ default="0"
-                data-property="rotateZ"
-                data-unit="deg">
-                <input type="number" name="rotateZ" min="-180" max="180"/ value="0"
-                data-property="rotateZ"
-                data-unit="deg">
-            </li>
-        </ul>
-    </form>
+
+<div class="wrapper" id="animationToolsCurrentElement">
+    <p>animation tool current element</p>
+    <div class="row">
+        <div class="col">
+            <p>transformations</p>
+            <form id="transformationsForm">
+                <ul>
+                    <li>
+                        <label for="translateX">translateX</label>
+                        <input type="range" name="translateX" min="-170" max="170"/ default="0"
+                        data-property="translateX"
+                        data-unit="px">
+                        <input type="number" name="translateX" min="-170" max="170"/ value="0"
+                        data-property="translateX"
+                        data-unit="px">
+                    </li>
+                    <li>
+                        <label for="translateY">translateY</label>
+                        <input type="range" name="translateY" min="-170" max="170"/ default="0"
+                        data-property="translateY"
+                        data-unit="px">
+                        <input type="number" name="translateY" min="-170" max="170"/ value="0"
+                        data-property="translateY"
+                        data-unit="px">
+                    </li>
+                    <li>
+                        <label for="translateZ">translateZ</label>
+                        <input type="range" name="translateZ" min="-170" max="170"/ default="0"
+                        data-property="translateZ"
+                        data-unit="px">
+                        <input type="number" name="translateZ" min="-170" max="170"/ value="0"
+                        data-property="translateZ"
+                        data-unit="px">
+                    </li>
+                    <li>
+                        <label for="rotateX">rotateX</label>
+                        <input type="range" name="rotateX" min="-180" max="180"/ default="0"
+                        data-property="rotateX"
+                        data-unit="deg">
+                        <input type="number" name="rotateX" min="-180" max="180"/ value="0"
+                        data-property="rotateX"
+                        data-unit="deg">
+                    </li>
+                    <li>
+                        <label for="rotateY">rotateY</label>
+                        <input type="range" name="rotateY" min="-180" max="180"/ default="0"
+                        data-property="rotateY"
+                        data-unit="deg">
+                        <input type="number" name="rotateY" min="-180" max="180"/ value="0"
+                        data-property="rotateY"
+                        data-unit="deg">
+                    </li>
+                    <li>
+                        <label for="rotateZ">rotateZ</label>
+                        <input type="range" name="rotateZ" min="-180" max="180"/ default="0"
+                        data-property="rotateZ"
+                        data-unit="deg">
+                        <input type="number" name="rotateZ" min="-180" max="180"/ value="0"
+                        data-property="rotateZ"
+                        data-unit="deg">
+                    </li>
+                </ul>
+            </form>
+            </div>
+            <div class="col">
+                <p>properties</p>
+                <form id="propertiesForm">
+                    <ul>
+                        <li>
+                            <label for="posTop">posTop</label>
+                            <input type="range" name="posTop" min="-170" max="170"/ default="0"
+                            data-property="posTop"
+                            data-unit="px">
+                            <input type="number" name="posTop" min="-170" max="170"/ value="0"
+                            data-property="posTop"
+                            data-unit="px">
+                        </li>
+                        <li>
+                            <label for="posLeft">posLeft</label>
+                            <input type="range" name="posLeft" min="-170" max="170"/ default="0"
+                            data-property="posLeft"
+                            data-unit="px">
+                            <input type="number" name="posLeft" min="-170" max="170"/ value="0"
+                            data-property="posLeft"
+                            data-unit="px">
+                        </li>
+                        <li>
+                            <label for="width">width</label>
+                            <input type="range" name="width" min="-170" max="170"/ default="0"
+                            data-property="width"
+                            data-unit="px">
+                            <input type="number" name="width" min="-170" max="170"/ value="0"
+                            data-property="width"
+                            data-unit="px">
+                        </li>
+                        <li>
+                            <label for="height">height</label>
+                            <input type="range" name="height" min="-170" max="170"/ default="0"
+                            data-property="height"
+                            data-unit="px">
+                            <input type="number" name="height" min="-170" max="170"/ value="0"
+                            data-property="height"
+                            data-unit="px">
+                        </li>
+
+                    </ul>
+                </form>
+            </div>
     </div>
-</div> -->
+</div>
+
+<div class="wrapper" id="animationToolsFrames">
+    <p>frames</p>
+    <div class="row">
+        <div class="col">
+          <ul id="framesList" class="inline-list">
+            <li class="active">1</li>
+            <li>2</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul id="framesListActions" class="inline-list">
+            <li><button onclick='animationTool.removeFrame()'>Remove</button></li>
+            <li><button onclick='animationTool.addFrame()'>Add</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
 
 <script src="js/animation-tool-base.js"></script>
 <script src="js/animation-tool.js"></script>

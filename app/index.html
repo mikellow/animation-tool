@@ -39,28 +39,52 @@
 </div>
 
 <div class="wrapper" id="animationToolsFrames">
-    <p>elements</p>
+
     <div class="row">
         <div class="col">
-          <ul id="framesList" class="inline-list">
-            <li class="active">1</li>
-            <li>2</li>
-          </ul>
+
+          <p>elements</p>
+            <div class="row">
+                <div class="col">
+                  <ul id="elementsList" class="inline-list">
+                    <li class="active">1</li>
+                    <li>2</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <ul id="elementsListActions" class="inline-list">
+                    <li><button onclick='animationTool.removeAnimationElement()'>Remove</button></li>
+                    <li><button onclick='animationTool.addAnimationElement()'>Add</button></li>
+                  </ul>
+                </div>
+              </div>
         </div>
         <div class="col">
-          <ul id="framesListActions" class="inline-list">
-            <li><button onclick='animationTool.removeFrame()'>Remove</button></li>
-            <li><button onclick='animationTool.addFrame()'>Add</button></li>
-          </ul>
+
+            <p>frames</p>
+            <div class="row">
+                <div class="col">
+                  <ul id="framesList" class="inline-list">
+                    <li class="active">1</li>
+                    <li>2</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <ul id="framesListActions" class="inline-list">
+                    <li><button onclick='animationTool.removeFrame()'>Remove</button></li>
+                    <li><button onclick='animationTool.addFrame()'>Add</button></li>
+                  </ul>
+                </div>
+              </div>
+
         </div>
-      </div>
     </div>
 </div>
 
 <div class="wrapper no-padding" id="displayContainer">
     <div class="display-box" id="displayBox">
-        <div class="display-element" id="original">original</div>
-        <div class="display-element" id="transformed">transformed</div>
+        <!-- <div class="display-element" id="original">original</div>
+        <div class="display-element" id="transformed">transformed</div> -->
     </div>
 </div>
 
@@ -134,37 +158,39 @@
                     <ul>
                         <li>
                             <label for="posTop">posTop</label>
-                            <input type="range" name="posTop" min="-170" max="170"/ default="0"
+                            <input type="range" name="posTop" min="0" max="200" default="0"
+                            value="0"
                             data-property="posTop"
                             data-unit="px">
-                            <input type="number" name="posTop" min="-170" max="170"/ value="0"
+                            <input type="number" name="posTop" min="0" max="200" value="0"
                             data-property="posTop"
                             data-unit="px">
                         </li>
                         <li>
                             <label for="posLeft">posLeft</label>
-                            <input type="range" name="posLeft" min="-170" max="170"/ default="0"
+                            <input type="range" name="posLeft" min="0" max="170" default="0"
+                            value="0"
                             data-property="posLeft"
                             data-unit="px">
-                            <input type="number" name="posLeft" min="-170" max="170"/ value="0"
+                            <input type="number" name="posLeft" min="0" max="170" value="0"
                             data-property="posLeft"
                             data-unit="px">
                         </li>
                         <li>
                             <label for="width">width</label>
-                            <input type="range" name="width" min="-170" max="170"/ default="0"
+                            <input type="range" name="width" min="-170" max="170" default="0"
                             data-property="width"
                             data-unit="px">
-                            <input type="number" name="width" min="-170" max="170"/ value="0"
+                            <input type="number" name="width" min="-170" max="170" value="0"
                             data-property="width"
                             data-unit="px">
                         </li>
                         <li>
                             <label for="height">height</label>
-                            <input type="range" name="height" min="-170" max="170"/ default="0"
+                            <input type="range" name="height" min="-170" max="170" default="0"
                             data-property="height"
                             data-unit="px">
-                            <input type="number" name="height" min="-170" max="170"/ value="0"
+                            <input type="number" name="height" min="-170" max="170" value="0"
                             data-property="height"
                             data-unit="px">
                         </li>
@@ -175,27 +201,9 @@
     </div>
 </div>
 
-<div class="wrapper" id="animationToolsFrames">
-    <p>frames</p>
-    <div class="row">
-        <div class="col">
-          <ul id="framesList" class="inline-list">
-            <li class="active">1</li>
-            <li>2</li>
-          </ul>
-        </div>
-        <div class="col">
-          <ul id="framesListActions" class="inline-list">
-            <li><button onclick='animationTool.removeFrame()'>Remove</button></li>
-            <li><button onclick='animationTool.addFrame()'>Add</button></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-</div>
-
-<script src="js/animation-tool-base.js"></script>
+<!-- <script src="js/animation-tool-base.js"></script> -->
 <script src="js/animation-tool.js"></script>
+<script src="js/animation-tool-main.js"></script>
 
 </body>
 </html>

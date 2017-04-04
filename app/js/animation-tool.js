@@ -1,21 +1,68 @@
-(function (window) {
-"use strict";
+function AnimationFrame () {
 
-    var frames = [];
-    var animationElements = [];
+    var model = {
+        timelinePosition : 0
+    }
+
+    function init () {
+        console.log('AnimationFrame init', AnimationFrame.animationElements);
+    }
+
+    init();
+
+    /* public */
+    function setTimelinePosition (position) {
+        model.timelinePosition = position;
+    }
+
+    return {
+        setTimelinePosition: setTimelinePosition
+    }
+
+}
+
+AnimationFrame.animationElements = [];
+
+function AnimationElement (config) {
+
+    var animationDiv;
+
+    var model = {
+        width: config.width,
+        height: config.height,
+        background: config.background
+    }
+
+    function init () {
+        var div = document.createElement("div");
+        div.style.width = model.width + "px";
+        div.style.height = model.height + "px";
+        div.style.background = model.background;
+        div.style.top = div.style.left = "0";
+        div.classList.add('display-element');
+
+        div.innerHTML = "Hello"
+
+        animationDiv = div;
+    }
+
+    /* public */
+
+    init();
+
+    return {
+        model: model,
+        animationDiv : animationDiv
+    }
+
+}
+
+function DisplayBoxCtrl () {
 
     var displayBox = document.getElementById('displayBox');
     var displayContainer = document.getElementById('displayContainer');
     var displayToolsForm = document.getElementById('displayToolsForm');
 
-    function setDisplayBoxSize (width, height) {
-        if (width) {
-            displayBox.style.width = width + 'px';
-        }
-        if (height) {
-            displayBox.style.height = height + 'px';
-        }
-    }
 
     function setDisplayBoxFormValues(width, height) {
         displayToolsForm.elements['displayWidth'].value = width;
@@ -51,22 +98,23 @@
 
     init();
 
-    var animationToolApi = new Object({
-        setDisplayHeight: function (element){
-            console.log('setDisplayHeight', element.value);
-            setDisplayBoxSize(null, element.value);
-        },
-        setDisplayWidth: function (element){
-            console.log('setDisplayWidth', element.value);
-            setDisplayBoxSize(element.value, null);
-        },
-        removeFrame: function () {
-            console.log('remove frame now');
-        },
-        addFrame: function () {
-            console.log('add frame now');
+    /* public */
+    function setDisplayBoxSize (width, height) {
+        if (width) {
+            displayBox.style.width = width + 'px';
         }
-    });
+        if (height) {
+            displayBox.style.height = height + 'px';
+        }
+    }
 
-    window.animationTool = animationToolApi;
-})(window);
+    function addAnimationElement (element) {
+        console.log('addAnimationElement', element.animationDiv);
+        displayBox.appendChild(element.animationDiv);
+    }
+
+    return {
+        setDisplayBoxSize   : setDisplayBoxSize,
+        addAnimationElement : addAnimationElement
+    }
+}

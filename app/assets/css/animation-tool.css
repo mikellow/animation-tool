@@ -66,11 +66,11 @@ ul.rows-labels li input {
 
 .display-element {
   position: absolute;
-  top: calc(50% - 50px);
-  left: calc(50% - 50px);
+  /*top: calc(50% - 50px);
+  left: calc(50% - 50px);*/
   display: block;
-  width: 100px;
-  height: 100px;
+  /*width: 100px;
+  height: 100px;*/
   border: 1px solid black;
   text-align: center;
 }

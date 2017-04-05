@@ -7,22 +7,60 @@
     var frames = [];
     var animationElements = [];
 
+    var transformationsForm = document.getElementById('transformationsForm');
+    var formHandler;
+
+
+
     var displayBoxCtrl;
 
+    function handleElementClick (event, element) {
+        console.log('handleElementClick', event, element);
+        setCurrentAnimationElement(element);
+    }
+
+    function setCurrentAnimationElement (animation) {
+        console.log('setCurrentAnimationElement', animation);
+        currentAnimationElement = animation;
+        currentAnimationElement.animationDiv = animation.animationDiv;
+
+        //transformedElement = currentAnimationElement.animationDiv;
+
+        formHandler.activateElement(currentAnimationElement);
+        console.log('currentAnimationElement', currentAnimationElement);
+    }
+
+    function addNewAnimationElement (config) {
+        var source = currentAnimationElement && currentAnimationElement.model || config
+        var newAnimationElement = new AnimationElement(source);
+        console.log('newAnimationElement', newAnimationElement);
+        animationElements.push(newAnimationElement);
+
+        newAnimationElement.animationDiv.addEventListener('click', function(event){
+            handleElementClick(event, newAnimationElement);
+        });
+
+        displayBoxCtrl.addAnimationElement(newAnimationElement);
+
+        return newAnimationElement;
+    }
+
+
     function init () {
+        AnimationFrame.animationElements = animationElements;
+
         displayBoxCtrl = new DisplayBoxCtrl();
+
+        formHandler = new FormHandler(transformationsForm);
 
         currentFrame = new AnimationFrame();
         frames.push(currentFrame);
 
-        currentAnimationElement = new AnimationElement({
+        currentAnimationElement = addNewAnimationElement({
             width: 100, height: 100, background: 'red'
         });
-        animationElements.push(currentAnimationElement);
-        displayBoxCtrl.addAnimationElement(currentAnimationElement);
 
-        AnimationFrame.animationElements = animationElements;
-
+        formHandler.activateElement(currentAnimationElement);
     }
 
     init();
@@ -51,75 +89,10 @@
         },
         addAnimationElement: function () {
             console.log('addAnimationElement now');
-            var newAnimationElement = new AnimationElement(currentAnimationElement.model);
-            console.log('newAnimationElement', newAnimationElement);
-            animationElements.push(newAnimationElement);
-
-            displayBoxCtrl.addAnimationElement(newAnimationElement);
+            addNewAnimationElement();
         }
     });
 
     window.animationTool = animationToolApi;
-
-
-
-
-
-    var form = document.getElementById('transformationsForm');
-    console.log('form elemenets', form.elements);
-
-    // var transformedElement = document.getElementById('transformed');
-    var transformedElement = currentAnimationElement.animationDiv;
-    var transformProperties = {};
-
-    var i = 0;
-    var iMax = form.elements.length;
-
-    for(;i < iMax; i++){
-        form.elements[i].addEventListener('input', function (event) {
-            var cssProperty = this.dataset.property;
-            var unit = this.dataset.unit;
-            var value = this.value;
-            console.log('cssProperty:', cssProperty, value, unit);
-            handleCssProperty(transformedElement, cssProperty, value, unit);
-        });
-    }
-
-    function handleCssProperty (element, property, value, unit) {
-        if (transformProperties[property]) {
-            transformProperties[property].value = value;
-        } else {
-            transformProperties[property] = { 'name': property, 'value': value, 'unit': unit};
-        }
-        console.log(transformProperties);
-        updateElementStyle(element);
-        updateInputsValues(transformProperties[property]);
-
-    }
-    function updateInputsValues (property) {
-
-        var elements = form.elements[property.name];
-        var i = 0;
-        var max = elements.length;
-        for (; i < max; i++) {
-            elements[i].value = property.value;
-        }
-    }
-    function updateElementStyle (element) {
-        var styleStr ='';
-        var prop;
-        for (var property in transformProperties) {
-            prop = transformProperties[property];
-            console.log('prop', prop);
-            styleStr += prop.name + '(' + prop.value + prop.unit + ') ';
-        }
-        console.log('styleStr', styleStr);
-
-        element.style.WebkitTransform = styleStr;
-        // Code for IE9
-        element.style.msTransform = styleStr;
-        // Standard syntax
-        element.style.transform = styleStr;
-    }
 
 })(window);
